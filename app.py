@@ -7,7 +7,7 @@ import threading
 app = Flask(__name__)
 
 # Load the Sentence-Transformer model globally
-model = SentenceTransformer('all-MiniLM-L6-v2')
+model = SentenceTransformer('all-MiniLM-L6-v2', device='cpu')
 model_lock = threading.Lock()
 
 @app.route('/', methods=['GET', 'POST'])
