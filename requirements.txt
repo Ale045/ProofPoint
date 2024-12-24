@@ -1,6 +1,6 @@
 flask
 keybert
 sentence-transformers
-torch==2.1.0+cpu
+torch==2.5.0+cpu
 gunicorn
 requests
