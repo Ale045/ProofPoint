@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reference Match - Find Relevant Research Papers</title>
+    <meta name="description" content="Reference Match helps you quickly find relevant research papers based on your input sentence or keywords. Refine your search and discover academic publications easily.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="path/to/your/favicon.png"> 
+
+    <!-- Open Graph / Social Media Tags -->
+    <meta property="og:title" content="Reference Match - Find Relevant Research Papers">
+    <meta property="og:description" content="Quickly find relevant research papers based on your input. Refine your search and discover academic publications.">
+    <meta property="og:image" content="path/to/your/social-image.jpg"> 
+    <meta property="og:url" content="your-website-url.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@yourtwitterhandle"> 
+    <meta name="twitter:title" content="Reference Match - Discover Relevant Research">
+    <meta name="twitter:description" content="Easily find research papers related to your query.">
+    <meta name="twitter:image" content="path/to/your/social-image.jpg"> 
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif; /* Modern, readable font */
+            background: #f5f5f5; /* Updated background */
+            color: #212529; /* Darker text color */
+            margin: 0;
+            padding: 0;
+            line-height: 1.6; 
+        }
+
+        .container {
+            max-width: 960px; /* Slightly wider container */
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px; /* Increased padding */
+            border-radius: 10px; /* Softer corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+        }
+
+        header {
+                /* 
+                * Use flexbox to align content horizontally 
+                * with space between left and right sections.
+                */
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 40px; /* Keep your existing margin if desired */
+        }
+
+        .contact-link {
+            text-decoration: none;       /* Remove underline from link */
+            color: #007bff;             /* Match the primary color if you wish */
+            font-weight: 600;           /* Make it stand out */
+            padding: 8px 12px;          /* Spacing around the link */
+            border: 1px solid #007bff;  /* Optional border to style the link */
+            border-radius: 6px;         /* Rounded corners */
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background-color: #007bff;  /* Change background on hover */
+            color: #fff;                /* White text on hover */
+        }
+
+        h1 {
+            font-weight: 700; /* Bolder title */
+            font-size: 2.5rem; /* Larger title */
+            margin-bottom: 10px;
+            color: #007bff; /* Primary color for title */
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+
+        h2 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.75rem; /* Slightly larger headings */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        textarea,
+        input[type="text"] {
+            width: 100%;
+            border: 1px solid #ced4da; /* Updated border color */
+            border-radius: 6px; /* Softer input corners */
+            font-size: 1rem;
+            padding: 12px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        textarea:focus,
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus effect */
+            border-color: #80bdff; /* Focus border color */
+        }
+
+        button[type="submit"] {
+            display: inline-block;
+            background: #007bff; /* Primary color for buttons */
+            color: #fff;
+            border: none;
+            border-radius: 6px; /* Softer button corners */
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+
+        .error {
+            background-color: #f8d7da; /* Lighter error background */
+            border: 1px solid #f5c6cb; /* Lighter error border */
+            color: #721c24; /* Darker error text */
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .paper-entry {
+            margin-bottom: 30px; /* Increased spacing between entries */
+            border: 1px solid #e0e0e0; /* Lighter border */
+            padding: 25px;
+            border-radius: 8px;
+            background: #fafafa;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .paper-entry:hover {
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12); /* Increased shadow on hover */
+        }
+
+        .paper-title {
+            font-weight: 600;
+            font-size: 1.3rem; /* Slightly larger title */
+            margin-bottom: 15px;
+            color: #007bff; /* Primary color for paper titles */
+        }
+
+        .paper-abstract {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .paper-url a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .paper-url a:hover {
+            text-decoration: underline;
+        }
+
+        .highlight {
+            background-color: #fffacd; /* Lighter highlight */
+            padding: 0.1em 0.2em;
+            border-radius: 3px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
+            textarea,
+            input[type="text"] {
+                font-size: 0.95rem;
+                padding: 10px;
+            }
+
+            button[type="submit"] {
+                font-size: 0.95rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+              <h1>Reference Match</h1>
+              <p class="tagline">Discover relevant research papers with ease</p>
+            </div>
+            <div class="header-right">
+              <a href="mailto:ytzlp750sv@gmail.com" class="contact-link">Contact</a>
+            </div>
+          </header>
+
+        <form method="POST">
+            <label for="sentence">Enter a sentence to find related research:</label>
+            <textarea 
+                id="sentence" 
+                name="sentence" 
+                rows="4" 
+                placeholder="Type your sentence here..." 
+                maxlength="200"
+            >{{ sentence }}</textarea>
+            <button type="submit">Search References</button>
+        </form>
+
+        {% if keywords %}
+            <h2>Extracted Keywords:</h2>
+            <form method="POST">
+                <input type="hidden" name="sentence" value="{{ sentence }}">
+                <label for="modified_topics">Refine your search with specific keywords:</label>
+                <input type="text" id="modified_topics" name="modified_topics" value="{{ keywords|join(' ') }}" placeholder="Enter keywords separated by spaces..." />
+                <button type="submit">Refine Search</button>
+            </form>
+        {% endif %}
+
+        {% if error %}
+            <div class="error">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        {% if paper_data %}
+            <h2>Search Results (Sorted by Relevance):</h2>
+            {% for data in paper_data %}
+                <div class="paper-entry">
+                    <div class="paper-title">
+                        {{ data.paper.title }}
+                    </div>
+                    <div class="paper-abstract">
+                        {% if  data.paper.abstract %}
+                            {% if data.similar_sentence in data.paper.abstract %}
+                                {{ data.paper.abstract.replace(data.similar_sentence, '<span class="highlight">' + data.similar_sentence + '</span>') | safe }}
+                            {% else %}
+                                {{ data.paper.abstract }}
+                                <p><em>Most relevant part of the abstract highlighted.</em></p>
+                            {% endif %}
+                        {% else %}
+                            No abstract available for this paper.
+                        {% endif %}
+                    </div>
+                    <div class="paper-url">
+                        <a href="{{ data.paper.url }}" target="_blank" rel="noopener noreferrer">Read More</a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>

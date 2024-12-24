@@ -1,0 +1,6 @@
+flask
+keybert
+sentence-transformers
+torch
+gunicorn
+requests

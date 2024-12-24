@@ -1,0 +1,276 @@
+/* General Styles */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: #0077cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+.sr-only { /* Screen Reader Only */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* Header */
+.site-header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-header .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.site-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+.site-nav li {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+.site-nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+    background: #f4f4f4;
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Form Styles */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+textarea,
+input[type="text"] {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.button {
+    display: inline-block;
+    background: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none; /* For accessibility */
+}
+
+.button:hover {
+    background: #1a252f;
+}
+
+.button.secondary {
+    background: #666;
+}
+
+.button.secondary:hover {
+    background: #444;
+}
+
+/* Keywords Refinement */
+.keywords-refinement {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+/* Error Message */
+.error {
+    background: #fbd6d6;
+    border: 1px solid #f3a6a6;
+    color: #a33a3a;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Search Results */
+.paper-entry {
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 6px;
+    transition: box-shadow 0.3s ease;
+    background: #fafafa;
+}
+
+.paper-entry:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.paper-title {
+    margin-bottom: 10px;
+}
+
+.paper-title a {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.paper-abstract {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.paper-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.paper-url a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.paper-url a:hover {
+    text-decoration: underline;
+}
+
+.highlight {
+    background-color: #fffd7a;
+}
+
+.no-results {
+    font-style: italic;
+    color: #777;
+}
+
+/* Footer */
+.site-footer {
+    background: #333;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .site-nav {
+        float: none;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .site-nav li {
+        margin: 0 10px;
+    }
+
+    .hero {
+        padding: 30px 0;
+    }
+
+    .search-form,
+    .search-results {
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    textarea,
+    input[type="text"] {
+        font-size: 0.9rem;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .paper-title a {
+        font-size: 1.1rem;
+    }
+
+    .paper-meta {
+        font-size: 0.8rem;
+    }
+}
