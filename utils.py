@@ -2,7 +2,7 @@ from keybert import KeyBERT
 from sentence_transformers import util
 
 def extract_keywords_for_search(sentence, top_n=5, use_mmr=True, diversity=0.7):
-    model = KeyBERT('all-MiniLM-L6-v2', device='cpu')
+    model = KeyBERT('all-MiniLM-L6-v2')
     keywords = model.extract_keywords(sentence, keyphrase_ngram_range=(1, 2), stop_words='english', top_n=top_n, use_mmr=use_mmr, diversity=diversity)
     keywords = [kw[0] for kw in keywords]
     return remove_substrings(keywords)
