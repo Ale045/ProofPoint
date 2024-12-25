@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template
 from utils import extract_keywords_for_search, find_similar_sentence_in_papers, SemanticScholarError, encode_abstracts
 from search import search_papers_by_topic
-from sentence_transformers import SentenceTransformer
 import threading
 
 app = Flask(__name__)

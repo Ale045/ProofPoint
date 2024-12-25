@@ -1,5 +1,4 @@
 flask
-keybert
-sentence-transformers
 gunicorn
 requests
+sentence_transformers

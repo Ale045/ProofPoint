@@ -1,4 +1,3 @@
-from keybert import KeyBERT
 from sentence_transformers import util
 import requests
 
