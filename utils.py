@@ -10,7 +10,7 @@ def extract_keywords_for_search(sentence):
         response = requests.post(
             CLOUD_EXTRACT_URL,
             json={"text": sentence},  # Use "abstract" as per the endpoint expectation
-            timeout=30
+            timeout=100
         )
         if response.status_code == 200:
             return response.json().get("keywords", [])  # Return extracted keywords
@@ -56,7 +56,7 @@ def encode_abstracts(abstract):
         response = requests.post(
             CLOUD_ENCODE_URL,
             json={"abstract": abstract},  # Use abstract as payload
-            timeout=30  # Adjust timeout if necessary
+            timeout=100  # Adjust timeout if necessary
         )
         
         if response.status_code == 200:
