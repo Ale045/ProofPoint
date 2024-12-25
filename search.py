@@ -90,8 +90,3 @@ def get_abstract_from_inverted_index(inverted_index):
     abstract_words = [word_positions[pos] for pos in sorted_positions]
     return " ".join(abstract_words)
 
-# import requests
-# Example usage
-# papers = search_papers_by_topic("natural language processing", limit=5)
-# for paper in papers:
-#   print(f"Title: {paper['title']}, DOI: {paper['doi']}, OpenAlex ID: {paper['openalex_id']}")

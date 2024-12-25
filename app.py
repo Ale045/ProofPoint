@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from utils import extract_keywords_for_search, find_similar_sentence_in_papers, SemanticScholarError
+from utils import extract_keywords_for_search, find_similar_sentence_in_papers, SemanticScholarError, encode_abstracts
 from search import search_papers_by_topic
 from sentence_transformers import SentenceTransformer
 import threading
@@ -7,8 +7,8 @@ import threading
 app = Flask(__name__)
 
 # Load the Sentence-Transformer model globally
-model = SentenceTransformer('all-MiniLM-L6-v2', device='cpu')
-model_lock = threading.Lock()
+# model = SentenceTransformer('all-MiniLM-L6-v2', device='cpu')
+# model_lock = threading.Lock()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -31,9 +31,12 @@ def index():
             return render_template('index.html', error=error_message)
 
         # Similarity Search
-        with model_lock:
-            example_embedding = model.encode(sentence, convert_to_tensor=True)
-            similar_sentences, scores = find_similar_sentence_in_papers(example_embedding, papers, model)
+        # with model_lock:
+        # example_embedding = model.encode(sentence, convert_to_tensor=True)
+        # replace . with space
+        sentence = sentence.replace(".", " ")
+        example_embedding = encode_abstracts(sentence)[0]
+        similar_sentences, scores = find_similar_sentence_in_papers(example_embedding, papers)
 
         if similar_sentences:
             # print(similar_sentences)
