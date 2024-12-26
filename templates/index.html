@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reference Match - Find Relevant Research Papers</title>
+    <title>Reference Match - Find Relevant Research Papers to Your Opinion</title>
     <meta name="description" content="Reference Match helps you quickly find relevant research papers based on your input sentence or keywords. Refine your search and discover academic publications easily.">
     
     <!-- Favicon -->
@@ -42,37 +42,48 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
         }
 
-        header {
-                /* 
-                * Use flexbox to align content horizontally 
-                * with space between left and right sections.
-                */
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 40px; /* Keep your existing margin if desired */
+        .top-bar {
+            background-color: #007bff; /* Blue background */
+            color: #fff; /* White text */
+            padding: 10px 20px; /* Padding for the bar */
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Center items vertically */
+            margin-bottom: 40px; /* Keep your existing margin if desired */
         }
 
-        .contact-link {
-            text-decoration: none;       /* Remove underline from link */
-            color: #007bff;             /* Match the primary color if you wish */
-            font-weight: 600;           /* Make it stand out */
-            padding: 8px 12px;          /* Spacing around the link */
-            border: 1px solid #007bff;  /* Optional border to style the link */
-            border-radius: 6px;         /* Rounded corners */
+        .top-bar .contact-link {
+            text-decoration: none;
+            color: #fff; /* White text */
+            font-weight: 600;
             transition: background-color 0.3s ease;
+            padding: 6px 10px;
+            border: 1px solid #fff;
+            border-radius: 6px;
+            margin-left: auto; /* Push the contact link to the right */
         }
 
-        .contact-link:hover {
-            background-color: #007bff;  /* Change background on hover */
-            color: #fff;                /* White text on hover */
+        .top-bar .contact-link:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Slight highlight on hover */
+        }
+
+        .top-bar .site-title {
+            font-size: 1.8rem; /* Adjust size as needed */
+            font-weight: 700;
+            margin: 0; /* Remove default margin */
+            color: #fff; /* Set text color to white */
+        }
+
+        .top-bar .site-title-container {
+            flex-grow: 1;       /* Allow the title container to take up available space */
+            text-align: center; /* Center the title within the container */
         }
 
         h1 {
             font-weight: 700; /* Bolder title */
             font-size: 2.5rem; /* Larger title */
             margin-bottom: 10px;
-            color: #007bff; /* Primary color for title */
+            color: black; /* Primary color for title */
         }
         
         .tagline {
@@ -210,19 +221,22 @@
     </style>
 </head>
 <body>
+    <div class="top-bar">
+        <div class="site-title-container">
+            <h1 class="site-title">ProofPoint</h1>
+        </div>
+        <a href="mailto:ytzlp750sv@gmail.com" class="contact-link">Contact</a>
+    </div>
     <div class="container">
         <header>
             <div class="header-left">
               <h1>Reference Match</h1>
               <p class="tagline">Discover relevant research papers with ease</p>
             </div>
-            <div class="header-right">
-              <a href="mailto:ytzlp750sv@gmail.com" class="contact-link">Contact</a>
-            </div>
           </header>
 
         <form method="POST">
-            <label for="sentence">Enter a sentence to find related research:</label>
+            <label for="sentence">Enter a sentence to find related opinion in researches:</label>
             <textarea 
                 id="sentence" 
                 name="sentence" 
