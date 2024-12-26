@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
-from utils import extract_keywords_for_search, find_similar_sentence_in_papers, SemanticScholarError, encode_abstracts
+from utils import extract_keywords_for_search, find_similar_sentences_cloud, SemanticScholarError, encode_abstracts
 from search import search_papers_by_topic
-import threading
+# import threading
 
 app = Flask(__name__)
 
@@ -35,10 +35,10 @@ def index():
         # replace . with space
         sentence = sentence.replace(".", " ")
         example_embedding = encode_abstracts(sentence)[0]
-        similar_sentences, scores = find_similar_sentence_in_papers(example_embedding, papers)
+        similar_sentences, scores = find_similar_sentences_cloud(example_embedding, papers)
 
         if similar_sentences:
-            # print(similar_sentences)
+            print(similar_sentences)
             paper_data = []
             for i in range(len(papers)):
                 paper_data.append({

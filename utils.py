@@ -1,8 +1,10 @@
-from sentence_transformers import util
+# from sentence_transformers import util
 import requests
 
 CLOUD_EXTRACT_URL = "https://gcloudextracttopic-667226361576.us-east1.run.app"
 CLOUD_ENCODE_URL = "https://gcloudencodeabstract-667226361576.us-east1.run.app/encode"
+CLOUD_RUN_URL = "https://gcloudfindsimilar-667226361576.us-east1.run.app/find-similar"  # Replace with your actual Cloud Run URL
+
 
 def extract_keywords_for_search(sentence):
     try:
@@ -86,35 +88,63 @@ def encode_abstracts(abstract):
 
 #     return similar_sentences, scores
 
-def find_similar_sentence_in_papers(example_embedding, papers, threshold=0):
-    similar_sentences = []
-    scores = []
-    for i, paper in enumerate(papers):
-        abstract_embeddings = encode_abstracts(paper["abstract"])
-        if not abstract_embeddings:
-            # Case 1: Empty abstract or processing error
-            similar_sentences.append("No similar sentence found.")  # Add a default value
-            scores.append(0)  # Add a default score
-            continue
+# def find_similar_sentence_in_papers(example_embedding, papers, threshold=0):
+#     similar_sentences = []
+#     scores = []
+#     for i, paper in enumerate(papers):
+#         abstract_embeddings = encode_abstracts(paper["abstract"])
+#         if not abstract_embeddings:
+#             # Case 1: Empty abstract or processing error
+#             similar_sentences.append("No similar sentence found.")  # Add a default value
+#             scores.append(0)  # Add a default score
+#             continue
 
-        cos_scores = util.pytorch_cos_sim(example_embedding, abstract_embeddings[0])
+#         cos_scores = util.pytorch_cos_sim(example_embedding, abstract_embeddings[0])
 
-        # found_similar = True  # Flag to track if a similar sentence is found for the current paper
-        # for j, score in enumerate(cos_scores[0]):
-        #     # if score >= threshold:
-        #         # Case 2: Similar sentence found (above threshold)
-        similar_index = cos_scores.argmax()
-        similar_sentence = paper["abstract"].split(". ")[similar_index]
-        similar_sentences.append(similar_sentence)
-        scores.append(cos_scores.max().item())
-        # found_similar = True
+#         # found_similar = True  # Flag to track if a similar sentence is found for the current paper
+#         # for j, score in enumerate(cos_scores[0]):
+#         #     # if score >= threshold:
+#         #         # Case 2: Similar sentence found (above threshold)
+#         similar_index = cos_scores.argmax()
+#         similar_sentence = paper["abstract"].split(". ")[similar_index]
+#         similar_sentences.append(similar_sentence)
+#         scores.append(cos_scores.max().item())
+#         # found_similar = True
 
-        # if not found_similar:
-        #     # Case 3: No similar sentence found (above threshold) for this paper
-        #     similar_sentences.append("No similar sentence found.")  # Add a default value
-        #     scores.append(0)  # Add a default score
+#         # if not found_similar:
+#         #     # Case 3: No similar sentence found (above threshold) for this paper
+#         #     similar_sentences.append("No similar sentence found.")  # Add a default value
+#         #     scores.append(0)  # Add a default score
 
-    return similar_sentences, scores
+#     return similar_sentences, scores
+
+def find_similar_sentences_cloud(example_embedding, papers, threshold=0):
+    try:
+        # Prepare the request payload
+        payload = {
+            "example_embedding": example_embedding,
+            "papers": papers,
+            "threshold": threshold
+        }
+
+        # Send POST request to Cloud Run
+        response = requests.post(
+            CLOUD_RUN_URL,
+            json=payload,
+            timeout=100  # Timeout to avoid hanging requests
+        )
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            data = response.json()
+            return data["sentences"], data["scores"]
+        else:
+            print(f"Error: {response.status_code} - {response.text}")
+            return ["Error processing request"], [0]
+
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed: {e}")
+        return ["Error connecting to service"], [0]
 
 class SemanticScholarError(Exception):  # Define the exception here
     pass
