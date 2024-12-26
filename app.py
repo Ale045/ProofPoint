@@ -24,7 +24,7 @@ def index():
 
         # Paper Search
         try:
-            papers = search_papers_by_topic(topic, limit=100)
+            papers = search_papers_by_topic(topic, limit=50)
         except SemanticScholarError as e:
             error_message = str(e)
             return render_template('index.html', error=error_message)
@@ -38,7 +38,7 @@ def index():
         similar_sentences, scores = find_similar_sentences_cloud(example_embedding, papers)
 
         if similar_sentences:
-            print(similar_sentences)
+            # print(similar_sentences)
             paper_data = []
             for i in range(len(papers)):
                 paper_data.append({
