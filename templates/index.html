@@ -3,98 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reference Match - Find Relevant Research Papers to Your Opinion</title>
+    <title>Reference Match - Find Relevant Research Papers</title>
     <meta name="description" content="Reference Match helps you quickly find relevant research papers based on your input sentence or keywords. Refine your search and discover academic publications easily.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="path/to/your/favicon.png"> 
+
+    <!-- Favicon (Replace with your actual favicon) -->
+    <link rel="icon" type="image/png" href="path/to/your/favicon.png">
 
     <!-- Open Graph / Social Media Tags -->
     <meta property="og:title" content="Reference Match - Find Relevant Research Papers">
     <meta property="og:description" content="Quickly find relevant research papers based on your input. Refine your search and discover academic publications.">
-    <meta property="og:image" content="path/to/your/social-image.jpg"> 
+    <meta property="og:image" content="path/to/your/social-image.jpg">
     <meta property="og:url" content="your-website-url.com">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@yourtwitterhandle"> 
+    <meta name="twitter:site" content="@yourtwitterhandle">
     <meta name="twitter:title" content="Reference Match - Discover Relevant Research">
     <meta name="twitter:description" content="Easily find research papers related to your query.">
-    <meta name="twitter:image" content="path/to/your/social-image.jpg"> 
+    <meta name="twitter:image" content="path/to/your/social-image.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
-            font-family: "Inter", sans-serif; /* Modern, readable font */
-            background: #f5f5f5; /* Updated background */
-            color: #212529; /* Darker text color */
+            font-family: 'Source Sans Pro', sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
             margin: 0;
             padding: 0;
-            line-height: 1.6; 
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 960px; /* Slightly wider container */
+            max-width: 800px;
             margin: 40px auto;
             background: #fff;
-            padding: 40px; /* Increased padding */
-            border-radius: 10px; /* Softer corners */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .top-bar {
-            background-color: #007bff; /* Blue background */
-            color: #fff; /* White text */
-            padding: 10px 20px; /* Padding for the bar */
-            display: flex; /* Use flexbox for layout */
-            justify-content: space-between; /* Space between items */
-            align-items: center; /* Center items vertically */
-            margin-bottom: 40px; /* Keep your existing margin if desired */
+            background-color: #002e5f;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
         }
 
         .top-bar .contact-link {
             text-decoration: none;
-            color: #fff; /* White text */
+            color: #fff;
             font-weight: 600;
             transition: background-color 0.3s ease;
             padding: 6px 10px;
             border: 1px solid #fff;
             border-radius: 6px;
-            margin-left: auto; /* Push the contact link to the right */
+            margin-left: auto;
         }
 
         .top-bar .contact-link:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* Slight highlight on hover */
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .top-bar .site-title {
-            font-size: 1.8rem; /* Adjust size as needed */
+            font-size: 1.8rem;
             font-weight: 700;
-            margin: 0; /* Remove default margin */
-            color: #fff; /* Set text color to white */
+            margin: 0;
+            color: #fff;
         }
 
         .top-bar .site-title-container {
-            flex-grow: 1;       /* Allow the title container to take up available space */
-            text-align: center; /* Center the title within the container */
+            flex-grow: 1;
+            text-align: center;
         }
 
         h1 {
-            font-weight: 700; /* Bolder title */
-            font-size: 2.5rem; /* Larger title */
+            font-weight: 700;
+            font-size: 2.5rem;
             margin-bottom: 10px;
-            color: black; /* Primary color for title */
+            color: #002e5f;
+            text-align: center;
         }
-        
+
         .tagline {
             font-size: 1.1rem;
             color: #6c757d;
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         h2 {
             font-weight: 600;
             margin-bottom: 20px;
-            font-size: 1.75rem; /* Slightly larger headings */
+            font-size: 1.75rem;
+            color: #002e5f;
         }
 
         label {
@@ -106,8 +112,8 @@
         textarea,
         input[type="text"] {
             width: 100%;
-            border: 1px solid #ced4da; /* Updated border color */
-            border-radius: 6px; /* Softer input corners */
+            border: 1px solid #ced4da;
+            border-radius: 6px;
             font-size: 1rem;
             padding: 12px;
             box-sizing: border-box;
@@ -118,16 +124,16 @@
         textarea:focus,
         input[type="text"]:focus {
             outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Focus effect */
-            border-color: #80bdff; /* Focus border color */
+            box-shadow: 0 0 5px rgba(0, 46, 95, 0.5);
+            border-color: #002e5f;
         }
 
         button[type="submit"] {
             display: inline-block;
-            background: #007bff; /* Primary color for buttons */
+            background: #ff7300;
             color: #fff;
             border: none;
-            border-radius: 6px; /* Softer button corners */
+            border-radius: 6px;
             padding: 12px 25px;
             font-size: 1rem;
             font-weight: 600;
@@ -136,39 +142,44 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
+        /* Specific style for the "Search References" button */
+        .search-form button[type="submit"] {
+            width: 100%; /* Make only this button full width */
+        }
+
         button[type="submit"]:hover {
-            background-color: #0056b3; /* Darker shade on hover */
+            background-color: #e56700;
         }
 
         .error {
-            background-color: #f8d7da; /* Lighter error background */
-            border: 1px solid #f5c6cb; /* Lighter error border */
-            color: #721c24; /* Darker error text */
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
             padding: 15px;
             border-radius: 6px;
             margin-top: 20px;
         }
 
         .paper-entry {
-            margin-bottom: 30px; /* Increased spacing between entries */
-            border: 1px solid #e0e0e0; /* Lighter border */
+            margin-bottom: 30px;
+            border: 1px solid #e0e0e0;
             padding: 25px;
             border-radius: 8px;
             background: #fafafa;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .paper-entry:hover {
-            transform: translateY(-2px); /* Slight lift on hover */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12); /* Increased shadow on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
         }
 
         .paper-title {
             font-weight: 600;
-            font-size: 1.3rem; /* Slightly larger title */
+            font-size: 1.3rem;
             margin-bottom: 15px;
-            color: #007bff; /* Primary color for paper titles */
+            color: #002e5f;
         }
 
         .paper-abstract {
@@ -187,9 +198,34 @@
         }
 
         .highlight {
-            background-color: #fffacd; /* Lighter highlight */
+            background-color: #fffacd;
             padding: 0.1em 0.2em;
             border-radius: 3px;
+        }
+
+        .spinner {
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #ff7300;
+            border-radius: 50%;
+            width: 14px;
+            height: 14px;
+            animation: spin 0.6s linear infinite;
+            margin-right: 8px;
+            display: none;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        button[type="submit"].loading .spinner {
+            display: inline-block;
+        }
+
+        button[type="submit"].loading {
+            padding: 12px 20px;
         }
 
         /* Responsive adjustments */
@@ -217,35 +253,11 @@
                 font-size: 0.95rem;
                 padding: 10px 20px;
             }
-        }
 
-        .spinner {
-          border: 2px solid #f3f3f3;      /* Light grey */
-          border-top: 2px solid #007bff;  /* Blue top segment */
-          border-radius: 50%;
-          width: 14px;
-          height: 14px;
-          animation: spin 0.6s linear infinite;
-          margin-right: 8px; /* Space between spinner & text */
-          display: none;
-          vertical-align: middle; /* Keep spinner aligned with text */
-      }
-
-
-        /* Animation for the spinner */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Show the spinner when the button is in a "loading" state */
-        button[type="submit"].loading .spinner {
-            display: inline-block;
-        }
-
-        /* Optionally, adjust button padding when loading */
-        button[type="submit"].loading {
-            padding: 12px 20px; /* Adjust padding to accommodate the spinner */
+            /* Reset width for smaller screens */
+            .search-form button[type="submit"] {
+                width: auto;
+            }
         }
     </style>
 </head>
@@ -264,7 +276,7 @@
             </div>
           </header>
 
-        <form method="POST">
+        <form method="POST" class="search-form">
             <label for="sentence">Enter a sentence to find related opinion in researches:</label>
             <textarea 
                 id="sentence" 
@@ -325,57 +337,51 @@
         {% endif %}
     </div>
     <script>
-        const searchForm = document.querySelector('form'); // Select the first form (Search References)
+        const searchForm = document.querySelector('.search-form'); // Select the first form (Search References)
         const refineForm = document.querySelectorAll('form')[1]; // Select the second form (Refine Search)
-    
+
         function addLoadingState(form) {
             const button = form.querySelector('button[type="submit"]');
             button.classList.add('loading'); // Add the "loading" class to the button
             button.disabled = true; // Disable the button while loading
         }
-    
+
         function removeLoadingState(form) {
             const button = form.querySelector('button[type="submit"]');
             button.classList.remove('loading'); // Remove the "loading" class
             button.disabled = false; // Re-enable the button
         }
-    
+
         function isInputValid(inputValue) {
             // Check if the input is not null, undefined, or made up of only whitespace
             return inputValue && inputValue.trim().length > 0;
         }
-    
+
         // Add loading state and validation when forms are submitted
         searchForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const sentenceInput = document.getElementById('sentence').value;
-    
+
             if (isInputValid(sentenceInput)) {
                 addLoadingState(searchForm);
                 setTimeout(() => {
                     searchForm.submit();
                 }, 50); // Adjust delay as needed
-            } else {
-                // Optional: Display an error message or alert the user
-                // alert("Please enter a sentence.");
             }
         });
-    
+
         refineForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const keywordsInput = document.getElementById('modified_topics').value;
-    
+
             if (isInputValid(keywordsInput)) {
                 addLoadingState(refineForm);
                 setTimeout(() => {
                     refineForm.submit();
                 }, 50); // Adjust delay as needed
-            } else {
-                // Optional: Display an error message or alert the user
-                // alert("Please enter keywords.");
             }
         });
-    
+
         // Optional: Remove loading state if an error occurs or when the page reloads with results
         window.addEventListener('load', () => {
             if (document.querySelector('.error') || document.querySelector('.paper-entry')) {
