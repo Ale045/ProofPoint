@@ -34,8 +34,9 @@ import requests
 #         print(f"Error: {response.status_code}, {response.text}")
 #         return []
 
+URL = 'https://gcloudgetpapers-667226361576.us-east1.run.app'
 
-def search_papers_by_topic(topic, limit=100):
+def search_papers_by_topic(sentence, topic, limit=100):
     """
     Searches for papers related to a topic using the OpenAlex API.
 
@@ -46,31 +47,49 @@ def search_papers_by_topic(topic, limit=100):
     Returns:
     - A list of dictionaries containing the title, abstract, and URL of each paper.
     """
-    base_url = "https://api.openalex.org/works"
-    params = {
-        "search": topic,
-        # "filter": f"abstract.search:{topic}",  # Search in abstract using filter
-        "select": "title,open_access,abstract_inverted_index",  # Select inverted index
-        "per_page": limit,
-        "sort": "cited_by_count:desc"
+    # base_url = "https://api.openalex.org/works"
+    # params = {
+    #     "search": topic,
+    #     # "filter": f"abstract.search:{topic}",  # Search in abstract using filter
+    #     "select": "title,open_access,abstract_inverted_index",  # Select inverted index
+    #     "per_page": limit,
+    #     "sort": "cited_by_count:desc"
+    # }
+
+    # response = requests.get(base_url, params=params)
+
+    # if response.status_code == 200:
+    #     data = response.json()
+    #     results = []
+    #     for work in data.get("results", []):
+    #         abstract = get_abstract_from_inverted_index(work.get("abstract_inverted_index"))
+    #         results.append({
+    #             "title": work.get("title", "No Title"),
+    #             "abstract": abstract,
+    #             "url": work.get("open_access", {}).get("oa_url", "No URL Available"),
+    #         })
+    #     return results
+    # else:
+    #     print(f"Error: {response.status_code}, {response.text}")
+    #     return []
+    results = []
+    data = {
+        'sentence': sentence,
+        'topics': topic
     }
 
-    response = requests.get(base_url, params=params)
+    # Send POST Request (Corrected)
+    response = requests.post(URL, json=data, timeout=100)  # Use data=data for form data
 
+    # Print Response
     if response.status_code == 200:
-        data = response.json()
-        results = []
-        for work in data.get("results", []):
-            abstract = get_abstract_from_inverted_index(work.get("abstract_inverted_index"))
-            results.append({
-                "title": work.get("title", "No Title"),
-                "abstract": abstract,
-                "url": work.get("open_access", {}).get("oa_url", "No URL Available"),
-            })
-        return results
+        # print("Embeddings:", response.json()) # The response is probably not JSON. It is an HTML page.
+        # print(response.text) # Print the HTML content
+        result = response.json().get("papers", [])
+        return result
     else:
-        print(f"Error: {response.status_code}, {response.text}")
-        return []
+        print("Error:", response.status_code, response.text)
+        return results
 
 def get_abstract_from_inverted_index(inverted_index):
     """

@@ -24,7 +24,7 @@ def index():
 
         # Paper Search
         try:
-            papers = search_papers_by_topic(topic, limit=50)
+            papers = search_papers_by_topic(sentence, topic, limit=50)
         except SemanticScholarError as e:
             error_message = str(e)
             return render_template('index.html', error=error_message)
