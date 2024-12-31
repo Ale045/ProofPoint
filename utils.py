@@ -12,7 +12,7 @@ def extract_keywords_for_search(sentence):
         response = requests.post(
             CLOUD_EXTRACT_URL,
             json={"text": sentence},  # Use "abstract" as per the endpoint expectation
-            timeout=100
+            timeout=200
         )
         if response.status_code == 200:
             return response.json().get("keywords", [])  # Return extracted keywords
@@ -58,7 +58,7 @@ def encode_abstracts(abstract):
         response = requests.post(
             CLOUD_ENCODE_URL,
             json={"abstract": abstract},  # Use abstract as payload
-            timeout=100  # Adjust timeout if necessary
+            timeout=200  # Adjust timeout if necessary
         )
         
         if response.status_code == 200:
@@ -131,7 +131,7 @@ def find_similar_sentences_cloud(example_embedding, papers, threshold=0):
         response = requests.post(
             CLOUD_RUN_URL,
             json=payload,
-            timeout=100  # Timeout to avoid hanging requests
+            timeout=200  # Timeout to avoid hanging requests
         )
 
         # Check if the request was successful
