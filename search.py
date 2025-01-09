@@ -34,7 +34,8 @@ import requests
 #         print(f"Error: {response.status_code}, {response.text}")
 #         return []
 
-URL = 'https://gcloudgetpapers-667226361576.us-east1.run.app'
+# URL = 'https://gcloudgetpapers-667226361576.us-east1.run.app'
+URL = 'https://gcloudgetpaperssemantic-667226361576.us-east1.run.app'
 
 def search_papers_by_topic(sentence, topic, limit=100):
     """
@@ -91,21 +92,21 @@ def search_papers_by_topic(sentence, topic, limit=100):
         print("Error:", response.status_code, response.text)
         return results
 
-def get_abstract_from_inverted_index(inverted_index):
-    """
-    Reconstructs the abstract from OpenAlex's inverted index format.
-    """
-    if not inverted_index:
-        return "No Abstract Available"
+# def get_abstract_from_inverted_index(inverted_index):
+#     """
+#     Reconstructs the abstract from OpenAlex's inverted index format.
+#     """
+#     if not inverted_index:
+#         return "No Abstract Available"
 
-    # Create a dictionary to store word positions
-    word_positions = {}
-    for word, positions in inverted_index.items():
-        for pos in positions:
-            word_positions[pos] = word
+#     # Create a dictionary to store word positions
+#     word_positions = {}
+#     for word, positions in inverted_index.items():
+#         for pos in positions:
+#             word_positions[pos] = word
 
-    # Sort positions and reconstruct the abstract
-    sorted_positions = sorted(word_positions.keys())
-    abstract_words = [word_positions[pos] for pos in sorted_positions]
-    return " ".join(abstract_words)
+#     # Sort positions and reconstruct the abstract
+#     sorted_positions = sorted(word_positions.keys())
+#     abstract_words = [word_positions[pos] for pos in sorted_positions]
+#     return " ".join(abstract_words)
 
