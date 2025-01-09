@@ -44,16 +44,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        /* .top-bar {
-            background-color: #002e5f;
-            color: #fff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        } */
-
         .top-bar {
             background-color: #002e5f;
             color: #fff;
@@ -63,7 +53,6 @@
             justify-content: flex-end;  /* Aligns contact button to the right */
             align-items: center;
         }
-
 
         .top-bar .contact-link {
             text-decoration: none;
@@ -80,13 +69,6 @@
             background-color: rgba(255, 255, 255, 0.2);
         }
 
-        /* .top-bar .site-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 0;
-            color: #fff;
-        } */
-
         .top-bar .site-title {
             font-size: 1.8rem;
             font-weight: 700;
@@ -99,11 +81,6 @@
             left: 50%;
             transform: translateX(-50%);
         }
-
-        /* .top-bar .site-title-container {
-            flex-grow: 1;
-            text-align: center;
-        } */
 
         h1 {
             font-weight: 700;
@@ -168,7 +145,7 @@
 
         /* Specific style for the "Search References" button */
         .search-form button[type="submit"] {
-            width: 100%; /* Make only this button full width */
+            width: 100%;
         }
 
         button[type="submit"]:hover {
@@ -284,16 +261,6 @@
             }
         }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11531610078">
-    </script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-11531610078');
-    </script> -->
 </head>
 <body>
     <div class="top-bar">
@@ -302,13 +269,14 @@
         </div>
         <a href="mailto:ytzlp750sv@gmail.com" class="contact-link">Contact</a>
     </div>
+
     <div class="container">
         <header>
             <div class="header-left">
-              <h1>Find references for your opinions</h1>
-              <p class="tagline">Discover research papers to prove your point</p>
+                <h1>Find references for your opinions</h1>
+                <p class="tagline">Discover research papers to prove your point</p>
             </div>
-          </header>
+        </header>
 
         <form method="POST" class="search-form">
             <label for="sentence">Enter a sentence to find related opinion in researches:</label>
@@ -374,19 +342,33 @@
     <p style="text-align: center; font-size: 12px;">Powered by <a href="https://www.semanticscholar.org">Semantic Scholar</a></p>
 
     <script>
-        const searchForm = document.querySelector('.search-form'); // Select the first form (Search References)
-        const refineForm = document.querySelectorAll('form')[1]; // Select the second form (Refine Search)
+        const searchForm = document.querySelector('.search-form'); 
+        const refineForm = document.querySelectorAll('form')[1]; 
 
         function addLoadingState(form) {
             const button = form.querySelector('button[type="submit"]');
-            button.classList.add('loading'); // Add the "loading" class to the button
-            button.disabled = true; // Disable the button while loading
+            button.classList.add('loading'); 
+            button.disabled = true;
+            
+            // Change button text to let the user know it might take time
+            if (form === searchForm) {
+                button.innerHTML = '<span class="spinner"></span> This could take a minute sometimes...';
+            } else {
+                button.innerHTML = '<span class="spinner"></span> Please wait...';
+            }
         }
 
         function removeLoadingState(form) {
             const button = form.querySelector('button[type="submit"]');
-            button.classList.remove('loading'); // Remove the "loading" class
-            button.disabled = false; // Re-enable the button
+            button.classList.remove('loading'); 
+            button.disabled = false;
+            
+            // Revert the button text to its original label
+            if (form === searchForm) {
+                button.innerHTML = '<span class="spinner"></span> Search References';
+            } else {
+                button.innerHTML = '<span class="spinner"></span> Refine Search';
+            }
         }
 
         function isInputValid(inputValue) {
@@ -394,32 +376,31 @@
             return inputValue && inputValue.trim().length > 0;
         }
 
-        // Add loading state and validation when forms are submitted
+        // Add loading state and validation when the Search References form is submitted
         searchForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const sentenceInput = document.getElementById('sentence').value;
-
             if (isInputValid(sentenceInput)) {
                 addLoadingState(searchForm);
                 setTimeout(() => {
                     searchForm.submit();
-                }, 50); // Adjust delay as needed
+                }, 50);
             }
         });
 
+        // Add loading state and validation when the Refine Search form is submitted
         refineForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const keywordsInput = document.getElementById('modified_topics').value;
-
             if (isInputValid(keywordsInput)) {
                 addLoadingState(refineForm);
                 setTimeout(() => {
                     refineForm.submit();
-                }, 50); // Adjust delay as needed
+                }, 50);
             }
         });
 
-        // Optional: Remove loading state if an error occurs or when the page reloads with results
+        // Remove loading state if an error or search results are present on page load
         window.addEventListener('load', () => {
             if (document.querySelector('.error') || document.querySelector('.paper-entry')) {
                 removeLoadingState(searchForm);
